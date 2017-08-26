@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var User = require('./models/user');
 
-mongoose.connect('mongodb://heroku_4l1fzwm0:3k3sq8hpa6dapv263jkksk0hqm@ds159033.mlab.com:59033/heroku_4l1fzwm0');
+mongoose.connect(process.env.MONGOLAB_URI);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
