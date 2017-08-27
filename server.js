@@ -61,7 +61,7 @@ router.route('/users/:user_id')
   })
 
   .put((req, res) => {
-    User.getByIdAndUpdate(req.params.user_id, { $set: { order_state: req.body.order_state } }, { new: true }, (err, user) => {
+    User.findByIdAndUpdate(req.params.user_id, { $set: { order_state: req.body.order_state } }, { new: true }, (err, user) => {
       if (err)
         res.send(err);
       res.send(user);
