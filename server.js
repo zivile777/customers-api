@@ -51,6 +51,15 @@ router.route('/users')
         });
       });
 
+router.route('/users/:user_id')
+  .get((req, res) => {
+    User.findById(req.params.user_id, (err, user) => {
+      if (err)
+        res.send(err);
+      res.json(user);
+    });
+  });
+
 app.use('/api', router);
 
 app.listen(port);
