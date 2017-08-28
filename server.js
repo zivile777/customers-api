@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.route('/users')
-    .post((req, res) => {
+    .put((req, res) => {
       var user = new User();
       user.name = req.body.name;
       user.technician = req.body.technician;
@@ -60,7 +60,7 @@ router.route('/users/:user_id')
     });
   })
 
-  .put((req, res) => {
+  .post((req, res) => {
     User.findByIdAndUpdate(req.params.user_id, { $set: { order_state: req.body.order_state } }, { new: true }, (err, user) => {
       if (err)
         res.send(err);
